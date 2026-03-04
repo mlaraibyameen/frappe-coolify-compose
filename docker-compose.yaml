@@ -39,6 +39,7 @@ services:
         condition: service_started
         required: true
     environment:
+      SERVICE_FQDN_FRONTEND_8080: '${SERVICE_FQDN_FRONTEND_8080}'
       BACKEND: 'backend:8000'
       FRAPPE_SITE_NAME_HEADER: '${FRAPPE_SITE_NAME_HEADER:-$$host}'
       SOCKETIO: 'websocket:9000'
