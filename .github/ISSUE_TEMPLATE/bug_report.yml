@@ -1,0 +1,72 @@
+name: Bug Report
+description: Something isn't working as expected
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please fill in the details below.
+
+  - type: input
+    id: coolify-version
+    attributes:
+      label: Coolify version
+      placeholder: "e.g. 4.0.0-beta.361"
+    validations:
+      required: true
+
+  - type: input
+    id: image-version
+    attributes:
+      label: Image / VERSION env var
+      placeholder: "e.g. ghcr.io/frappe/hrms:version-15"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: failing-service
+    attributes:
+      label: Which service is failing?
+      options:
+        - backend
+        - frontend
+        - websocket
+        - queue-default
+        - queue-long
+        - queue-short
+        - scheduler
+        - configurator
+        - create-site
+        - migration
+        - db
+        - redis-cache
+        - redis-queue
+        - redis-socketio
+        - Other / multiple
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Set env vars ...
+        2. Deploy ...
+        3. See error in logs ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Paste the logs from the failing service (from Coolify's log viewer)
+      render: shell
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
